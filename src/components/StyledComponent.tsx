@@ -2,6 +2,7 @@ import styled, {keyframes} from 'styled-components'
 
 const Container = styled.div`
   display: flex;
+  background-color: ${props => props.theme.bgColor};
 `;
 
 const Box = styled.div`
@@ -65,7 +66,7 @@ const Wrap = styled.div`
 `;
 
 const Title = styled.h1`
-  background-color: ${props => props.theme.backgroundColor};
+  background-color: ${props => props.theme.bgColor};
   color: ${props => props.theme.textColor};
 `;
 
