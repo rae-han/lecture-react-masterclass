@@ -3,6 +3,7 @@ import './App.css';
 import StyledComponentTS from "./components/StyledComponentTS";
 import Forms from "./components/Forms";
 import Theme from "./components/Theme";
+import Router from "./router";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <StyledComponentTS />
       <Forms />
       <Theme />
+      <Router />
     </div>
   );
 }
