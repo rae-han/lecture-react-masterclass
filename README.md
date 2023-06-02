@@ -21,3 +21,10 @@ return <div>This page doesn't exist!</div>;
 
 return <div>Something went wrong</div>;
 }
+
+
+Web: React Query Custom Hooks로 더 잘 사용해보기
+https://medium.com/hcleedev/web-react-query-custom-hooks%EB%A1%9C-%EB%8D%94-%EC%9E%98-%EC%82%AC%EC%9A%A9%ED%95%B4%EB%B3%B4%EA%B8%B0-2ea47fb358c3
+
+
+
