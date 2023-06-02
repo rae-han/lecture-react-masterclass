@@ -1,8 +1,18 @@
+import {BrowserRouter, Route, Routes} from 'react-router-dom'
+import Header from "./Header";
+import Home from "../pages/Home";
+import About from "../pages/About";
+
 const ReactRouterV6 = () => {
   return (
-    <div>
+    <BrowserRouter>
       <h1>React Router V6</h1>
-    </div>
+      <Header />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
