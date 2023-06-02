@@ -1,13 +1,30 @@
-import { BrowserRouter } from "react-router-dom";
-import Header from "../components/Header";
+import { createBrowserRouter } from 'react-router-dom'
 
-const Router = () => {
-  return (
-    <BrowserRouter>
-      <Header />
-    {/*  헤더를 여기 넣은 이유는 Router 밖에서 Link를 render 할수 없다.*/}
-    </BrowserRouter>
-  )
-}
+import App from "../App";
 
-export default Router;
+import Coin from "../pages/Coin";
+import Coins from "../pages/Coins";
+
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <App />,
+    children: [
+      {
+        path: "",
+        element: <Coins />,
+      },
+      {
+        path: "coins",
+        element: <Coins />,
+      },
+      {
+        path: "coin/:id",
+        element: <Coin />
+      },
+    ],
+    // errorElement: <NotFound />,
+  }
+])
+
+export default router;

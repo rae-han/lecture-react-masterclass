@@ -14,6 +14,6 @@ declare module 'styled-components' {
     //   main: string;
     //   secondary: string;
     // };
-    btnColor: string;
+    accentColor: string;
   }
 }
