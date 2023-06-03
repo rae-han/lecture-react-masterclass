@@ -4,6 +4,8 @@ import App from "../App";
 
 import Coin from "../pages/Coin";
 import Coins from "../pages/Coins";
+import Chart from "../components/Chart";
+import Price from "../components/Price";
 
 const router = createBrowserRouter([
   {
@@ -19,8 +21,22 @@ const router = createBrowserRouter([
         element: <Coins />,
       },
       {
-        path: "coin/:id",
-        element: <Coin />
+        path: "coin/:coinId",
+        element: <Coin />,
+        children: [
+          {
+            path: "",
+            element: <Chart />
+          },
+          {
+            path: "chart",
+            element: <Chart />
+          },
+          {
+            path: "price",
+            element: <Price />
+          }
+        ]
       },
     ],
     // errorElement: <NotFound />,
