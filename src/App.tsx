@@ -32,21 +32,14 @@ const GlobalStyle = createGlobalStyle`
 const queryClient = new QueryClient()
 
 function App() {
-  // const [isDark, setIsDark] = useState(true);
-  // const onToggleTheme = () => setIsDark(prev => !prev);
-  const isDark = useRecoilValue(isDarkAtom);
-
   return (
-
-    <ThemeProvider theme={isDark ? darkTheme : lightTheme}>
-      <QueryClientProvider client={queryClient}>
-        <div className="App">
-          <GlobalStyle />
-          <Outlet />
-        </div>
-        <ReactQueryDevtools initialIsOpen={false} />
-      </QueryClientProvider>
-    </ThemeProvider>
+    <QueryClientProvider client={queryClient}>
+      <div className="App">
+        <GlobalStyle />
+        <Outlet />
+      </div>
+      <ReactQueryDevtools initialIsOpen={false} />
+    </QueryClientProvider>
   );
 }
 
