@@ -3,6 +3,8 @@ import {Outlet} from "react-router-dom";
 
 import './styles/reset.css'
 import {createGlobalStyle} from "styled-components";
+import {QueryClient, QueryClientProvider} from "@tanstack/react-query";
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 
 const GlobalStyle = createGlobalStyle`
   @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400&display=swap');
@@ -23,12 +25,17 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
+const queryClient = new QueryClient()
+
 function App() {
   return (
-    <div className="App">
-      <GlobalStyle />
-      <Outlet />
-    </div>
+      <QueryClientProvider client={queryClient}>
+        <div className="App">
+          <GlobalStyle />
+          <Outlet />
+        </div>
+        <ReactQueryDevtools initialIsOpen={false} />
+      </QueryClientProvider>
   );
 }
 

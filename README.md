@@ -33,4 +33,7 @@ https://flatuicolors.com/
 https://app.quicktype.io/?l=ts
 
 
+npm install --save react-apexcharts apexcharts
+
+
 
