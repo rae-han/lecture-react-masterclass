@@ -1,10 +1,14 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Outlet} from "react-router-dom";
 
 import './styles/reset.css'
 import {createGlobalStyle} from "styled-components";
 import {QueryClient, QueryClientProvider} from "@tanstack/react-query";
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+import {darkTheme, lightTheme, theme} from "./styles/theme";
+import {ThemeProvider} from "styled-components";
+import {useRecoilValue} from "recoil";
+import {isDarkAtom} from "./store";
 
 const GlobalStyle = createGlobalStyle`
   @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400&display=swap');
@@ -28,7 +32,13 @@ const GlobalStyle = createGlobalStyle`
 const queryClient = new QueryClient()
 
 function App() {
+  // const [isDark, setIsDark] = useState(true);
+  // const onToggleTheme = () => setIsDark(prev => !prev);
+  const isDark = useRecoilValue(isDarkAtom);
+
   return (
+
+    <ThemeProvider theme={isDark ? darkTheme : lightTheme}>
       <QueryClientProvider client={queryClient}>
         <div className="App">
           <GlobalStyle />
@@ -36,6 +46,7 @@ function App() {
         </div>
         <ReactQueryDevtools initialIsOpen={false} />
       </QueryClientProvider>
+    </ThemeProvider>
   );
 }
 

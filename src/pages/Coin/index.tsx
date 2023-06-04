@@ -4,6 +4,7 @@ import {CoinInfo} from "../../typings/coin";
 import {Price} from "../../typings/price";
 import {useCoin} from "../../hooks/useQuery/coin";
 import {useTickers} from "../../hooks/useQuery/tickers";
+import {Helmet} from "react-helmet";
 
 interface Params {
   coinId: string
@@ -37,7 +38,12 @@ const Coin = () => {
         ? (<div>loading...</div>)
         : (
           <div>
+            <Helmet>
+              <title>{coinInfo?.name}</title>
+            </Helmet>
             <h1>{state?.name ? state.name : coinInfo?.name}</h1>
+            <h2>price: {priceInfo?.quotes.USD.price.toFixed(2)}</h2>
+            <h2>price: {priceInfo?.quotes.USD.price}</h2>
             <ul>
               <li><Link to={'chart'} replace={true}>Chart</Link></li>
               <li><Link to={'price'} replace={true}>Price</Link></li>

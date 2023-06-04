@@ -7,7 +7,8 @@ export const fetchTickersAPI = async (coinId: string) => {
 }
 export const useTickers = (coinId: string) => {
   return useQuery<Price>(['priceInfo', coinId], () => fetchTickersAPI(coinId), {
-    staleTime: 1000 * 60 * 60
+    // staleTime: 1000 * 60 * 60,
+    refetchInterval: 5000,
   })
 }
 

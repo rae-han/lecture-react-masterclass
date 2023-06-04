@@ -30,10 +30,15 @@ https://fonts.google.com
 
 https://flatuicolors.com/
 
-https://app.quicktype.io/?l=ts
+https://app.[index.tsx](src%2Findex.tsx)quicktype.io/?l=ts
 
 
 npm install --save react-apexcharts apexcharts
+
+# recoil
+아톰을 생성
+각각의 아톰에는 원하는 값을 저장.
+
 
 
 
