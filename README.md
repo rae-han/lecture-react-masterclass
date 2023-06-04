@@ -26,5 +26,19 @@ return <div>Something went wrong</div>;
 Web: React Query Custom Hooks로 더 잘 사용해보기
 https://medium.com/hcleedev/web-react-query-custom-hooks%EB%A1%9C-%EB%8D%94-%EC%9E%98-%EC%82%AC%EC%9A%A9%ED%95%B4%EB%B3%B4%EA%B8%B0-2ea47fb358c3
 
+https://fonts.google.com
+
+https://flatuicolors.com/
+
+https://app.[index.tsx](src%2Findex.tsx)quicktype.io/?l=ts
+
+
+npm install --save react-apexcharts apexcharts
+
+# recoil
+아톰을 생성
+각각의 아톰에는 원하는 값을 저장.
+
+
 
 
