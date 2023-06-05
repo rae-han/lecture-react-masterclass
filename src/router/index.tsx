@@ -1,7 +1,8 @@
 import { createBrowserRouter } from 'react-router-dom'
 
 import App from "../App";
-import TodoPage from "../pages/Todo";
+import TodoPage from "../components/Todo";
+import ToDoHookFormPage from "../pages/ToDoHookForm";
 
 const router = createBrowserRouter([
   {
@@ -10,7 +11,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: '',
-        element: <TodoPage />
+        element: <ToDoHookFormPage />
       },
     ],
     // errorElement: <NotFound />,
