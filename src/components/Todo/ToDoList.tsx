@@ -1,6 +1,6 @@
-import React, {MouseEventHandler} from 'react';
+import React, {FormEventHandler, MouseEventHandler} from 'react';
 import {useRecoilState, useRecoilValue, useSetRecoilState} from "recoil";
-import {ToDo, toDoState} from "../../store";
+import {categoryState, ToDo, toDoSelector, toDoSelectorWithCategory, toDoState} from "../../store";
 
 const ToDoItem = ({ text, category, id }: ToDo) => {
   const setToDos = useSetRecoilState(toDoState);
@@ -52,11 +52,39 @@ const ToDoItem = ({ text, category, id }: ToDo) => {
 
 const ToDoList = () => {
   const toDos = useRecoilValue<ToDo[]>(toDoState)
+  const [toDo, doing, done] = useRecoilValue(toDoSelector);
+  const [categroy, setCategory] = useRecoilState(categoryState)
+  const toDosCategroy = useRecoilValue(toDoSelectorWithCategory);
+
+  const onInput: FormEventHandler<HTMLSelectElement> = (e) => {
+    console.log(e.currentTarget.value)
+    setCategory(e.currentTarget.value)
+  }
+
+  console.log({toDo, doing, done})
 
   return (
-    <ul>
-      {toDos.map(toDo => <ToDoItem key={toDo.id} {...toDo} />)}
-    </ul>
+    <>
+      <select value={categroy} onInput={onInput}>
+        <option value="TO_DO">TO DO</option>
+        <option value="DOING">Doing</option>
+        <option value="DONE">Done</option>
+      </select>
+      {/*원래는 폼까지 적어야함.*/}
+      <ul>
+        {toDos.map(toDo => <ToDoItem key={toDo.id} {...toDo} />)}
+      </ul>
+      <hr />
+      <ul>
+        {toDo.map(toDo => <ToDoItem key={toDo.id} {...toDo} />)}
+        {doing.map(toDo => <ToDoItem key={toDo.id} {...toDo} />)}
+        {done.map(toDo => <ToDoItem key={toDo.id} {...toDo} />)}
+      </ul>
+      <hr />
+      <ul>
+        {toDosCategroy.map(toDo => <ToDoItem key={toDo.id} {...toDo} />)}
+      </ul>
+    </>
   );
 };
 

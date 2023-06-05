@@ -43,7 +43,11 @@ https://regexr.com/
 
 https://regex101.com/
 
+recoil의 selectors(selector)는 derived state를 나타낸다.
+derived state란 state를 입력 받아 그걸 변형해 반환하는 순수함수를 거쳐 반환된 값이다.
 
+todo 리스트에서 status가 각각 다를수 있는데(done, todo, ing) 이 값을 기준으로 분류 가능하다.
+이게 있으면 각각 값에 따라 값을 또 따로 관리할 필요 없이 하나의 atom으로 관리 가능하다.(done 따로, ing 따로)
 
 
 >
