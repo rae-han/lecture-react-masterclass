@@ -5,15 +5,24 @@ export const isDarkAtom = atom({
   default: true, // 기본 값
 })
 
+type TCategories = 'DONE' | 'DOING' | 'TO_DO'
+
+export enum Categories {
+  'TO_DO' = 'TO_DO',
+  'DOING' = 'DOING',
+  'DONE' = 'DONE',
+}
+
 export interface ToDo {
   id: number;
   text: string;
-  category: 'DONE' | 'DOING' | "TO_DO"
+  category: Categories;
 }
 
-export const categoryState = atom({
+export const categoryState = atom<Categories>({
   key: 'category',
-  default: 'TO_DO'
+  // default: 'TO_DO'
+  default: Categories.TO_DO
 })
 
 export const toDoState = atom<ToDo[]>({
@@ -27,7 +36,7 @@ export const toDoSelector = selector({
     const toDos = get(toDoState)
     console.log(123123, toDos)
     // return toDos.length
-    return [toDos.filter((toDo) => toDo.category === 'TO_DO'), toDos.filter((toDo) => toDo.category === 'DOING'), toDos.filter((toDo) => toDo.category === 'DONE')]
+    return [toDos.filter((toDo) => toDo.category === Categories.TO_DO), toDos.filter((toDo) => toDo.category === Categories.DOING), toDos.filter((toDo) => toDo.category === Categories.DONE)]
   }
 })
 

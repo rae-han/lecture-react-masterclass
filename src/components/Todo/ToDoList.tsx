@@ -1,6 +1,6 @@
 import React, {FormEventHandler, MouseEventHandler} from 'react';
 import {useRecoilState, useRecoilValue, useSetRecoilState} from "recoil";
-import {categoryState, ToDo, toDoSelector, toDoSelectorWithCategory, toDoState} from "../../store";
+import {Categories, categoryState, ToDo, toDoSelector, toDoSelectorWithCategory, toDoState} from "../../store";
 
 const ToDoItem = ({ text, category, id }: ToDo) => {
   const setToDos = useSetRecoilState(toDoState);
@@ -44,9 +44,12 @@ const ToDoItem = ({ text, category, id }: ToDo) => {
     {/*{category !== 'TO_DO' && <button onClick={() => onClick('TO_DO')}>To Do</button>}*/}
     {/*{category !== 'DONE' && <button onClick={() => onClick('DONE')}>DONE</button>}*/}
     {/*{category !== 'DOING' && <button onClick={() => onClick('DOING')}>DOING</button>}*/}
-    {category !== 'TO_DO' && <button name="TO_DO" onClick={onClickWithName}>To Do</button>}
-    {category !== 'DONE' && <button name="DONE" onClick={onClickWithName}>DONE</button>}
-    {category !== 'DOING' && <button name="DOING" onClick={onClickWithName}>DOING</button>}
+    {/*{category !== 'TO_DO' && <button name="TO_DO" onClick={onClickWithName}>To Do</button>}*/}
+    {/*{category !== 'DONE' && <button name="DONE" onClick={onClickWithName}>DONE</button>}*/}
+    {/*{category !== 'DOING' && <button name="DOING" onClick={onClickWithName}>DOING</button>}*/}
+    {category !== Categories.TO_DO && <button name={Categories.TO_DO} onClick={onClickWithName}>To Do</button>}
+    {category !== Categories.DONE && <button name={Categories.DONE} onClick={onClickWithName}>DONE</button>}
+    {category !== Categories.DOING && <button name={Categories.DOING} onClick={onClickWithName}>DOING</button>}
   </li>
 }
 
@@ -58,7 +61,7 @@ const ToDoList = () => {
 
   const onInput: FormEventHandler<HTMLSelectElement> = (e) => {
     console.log(e.currentTarget.value)
-    setCategory(e.currentTarget.value)
+    setCategory(e.currentTarget.value as any)
   }
 
   console.log({toDo, doing, done})
@@ -66,9 +69,9 @@ const ToDoList = () => {
   return (
     <>
       <select value={categroy} onInput={onInput}>
-        <option value="TO_DO">TO DO</option>
-        <option value="DOING">Doing</option>
-        <option value="DONE">Done</option>
+        <option value={Categories.TO_DO}>TO DO</option>
+        <option value={Categories.DOING}>Doing</option>
+        <option value={Categories.DONE}>Done</option>
       </select>
       {/*원래는 폼까지 적어야함.*/}
       <ul>
